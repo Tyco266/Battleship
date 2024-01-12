@@ -27,7 +27,6 @@ public class Main {
         for (int i = 0; i < size; i++) {
             System.out.print(i + "  ");
         }
-
         System.out.println();
         for (int i = 0; i < size; i++) {
             System.out.print(i + "  ");
