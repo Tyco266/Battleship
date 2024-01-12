@@ -1,6 +1,20 @@
 import java.util.Arrays;
+import java.util.Objects;
+import java.util.Scanner;
 
 public class Main {
+
+
+    private static void gameStart() {
+        System.out.println("Zum starten des Spieles 'Start' eingeben.");
+        Scanner scanner = new Scanner(System.in);
+        String start = scanner.nextLine();
+        while (!Objects.equals(start, "Start")) {
+            start = scanner.nextLine();
+        }
+        System.out.println("Das Spiel wird gestartet");
+        System.out.println();
+    }
 
     private static void initializePlayGround(char[][] playGround) {
         for (char[] row : playGround) {
@@ -9,11 +23,16 @@ public class Main {
     }
 
     private static void showPlayGround(char[][] playGround, int size) {
-        System.out.println("  0 1 2 3 4");
+        System.out.print("   ");
         for (int i = 0; i < size; i++) {
-            System.out.print(i + " ");
-            for (int j = 0; j < playGround[i].length; j++) {
-                System.out.print(playGround[i][j] + " ");
+            System.out.print(i + "  ");
+        }
+
+        System.out.println();
+        for (int i = 0; i < size; i++) {
+            System.out.print(i + "  ");
+            for (int j = 0; j < size; j++) {
+                System.out.print(playGround[i][j] + "  ");
             }
             System.out.println();
         }
@@ -25,6 +44,7 @@ public class Main {
         int size = 5;
         char[][] playGround = new char[size][size];
 
+        gameStart();
         initializePlayGround(playGround);
         showPlayGround(playGround, size);
 
