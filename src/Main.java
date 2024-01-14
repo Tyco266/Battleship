@@ -6,12 +6,25 @@ public class Main {
 
 
     private static void gameStart() {
-        System.out.println("Zum starten des Spieles 'Start' eingeben.");
         Scanner scanner = new Scanner(System.in);
-        String start = scanner.nextLine();
-        while (!Objects.equals(start, "Start")) {
-            start = scanner.nextLine();
+        String choose;
+
+        while (true) {
+            System.out.println("Zum starten des Spiels 'Start' eingeben, zum lesen der Anleitung 'Anleitung' eingeben.");
+            choose = scanner.nextLine();
+
+            if (Objects.equals(choose, "Anleitung")) {
+                System.out.println("Anleitung hier");
+                System.out.println();
+                continue;
+            } else if (Objects.equals(choose, "Start")) {
+                System.out.println("Spiel gestartet");
+                break;
+            } else {
+                System.out.println("Ungültige Eingabe. Bitte 'Start' oder 'Anleitung' eingeben.");
+            }
         }
+
     }
 
     private static int gameSize() {
