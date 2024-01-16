@@ -82,4 +82,27 @@ public class Main {
         }
         System.out.println();
     }
+
+
+private boolean[][] pitch;
+
+    public boolean shoot(int x, int y) {
+        if (x < 0 || x > 5 || y < 0 || y > 5) {
+            System.out.println("Ungültige Koordinaten. Bitte gib gültige Koordinaten ein.");
+            return false;
+        }
+
+        if (pitch[x][y]) {
+            System.out.println("Treffer! Du hast ein Schiff getroffen!");
+            return true;
+        } else {
+            System.out.println("Leider kein Treffer. Versuche es erneut!");
+            return false;
+        }
+    }
+    private void drowningships(int x, int y) {
+        pitch[x][y] = false;
+        System.out.println("Das Schiff wurde versenkt!");
+    }
 }
+
