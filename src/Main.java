@@ -61,6 +61,13 @@ public class Main {
             }
         }
 
+public Scanner [] shoot() {
+        System.out.println("Gib eine x Koordinate ein!");
+        Scanner x = new Scanner(System.in);
+        System.out.println("Gib eine y-Koordinate ein!");
+        Scanner y = new Scanner (System.in);
+        Scanner[] koordinate = {x,y};
+        return koordinate;
 
     }
 
