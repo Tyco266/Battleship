@@ -84,15 +84,15 @@ public class Main {
     }
 
 
-private boolean[][] pitch;
+private boolean[][] shoot;
 
-    public boolean shoot(int x, int y) {
+    public boolean pitch(int x, int y) {
         if (x < 0 || x > 5 || y < 0 || y > 5) {
             System.out.println("Ungültige Koordinaten. Bitte gib gültige Koordinaten ein.");
             return false;
         }
 
-        if (pitch[x][y]) {
+        if (shoot[x][y]) {
             System.out.println("Treffer! Du hast ein Schiff getroffen!");
             return true;
         } else {
@@ -101,7 +101,7 @@ private boolean[][] pitch;
         }
     }
     private void drowningships(int x, int y) {
-        pitch[x][y] = false;
+        shoot[x][y] = false;
         System.out.println("Das Schiff wurde versenkt!");
     }
 }
