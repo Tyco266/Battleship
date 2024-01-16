@@ -12,8 +12,12 @@ public class Main {
         char[][] playGround = new char[size][size];
 
         initializePlayGround(playGround);
+        //Tyco:Zauber Schiffe da rein
+        //Mia int x, y
         showPlayGround(playGround, size);
-
+        //Userdialog > x: 1 y: 2
+        int fakex=0,fakey=1;
+        checkHitanddrownship(fakex,fakey,size,playGround);
 
     }
 
@@ -85,25 +89,21 @@ public class Main {
     }
 
 
-private boolean[][] shoot;
-
-    public boolean pitch(int x, int y, int size) {
+    public static boolean checkHitanddrownship(int x, int y, int size, char[][] playground) {
         if (x < 0 || x > size || y < 0 || y > size) {
             System.out.println("Ungültige Koordinaten. Bitte gib gültige Koordinaten ein.");
             return false;
         }
-
-        if (shoot[x][y]) {
+        char gameObject = playground[x][y];
+        if (gameObject != '~' ) {
             System.out.println("Treffer! Du hast ein Schiff getroffen!");
+            playground[x][y] = 'X'; //Schiffswrack markiert mit X
             return true;
         } else {
             System.out.println("Leider kein Treffer. Versuche es erneut!");
             return false;
         }
     }
-    private void drowningships(int x, int y) {
-        shoot[x][y] = false;
-        System.out.println("Das Schiff wurde versenkt!");
-    }
+
 }
 
