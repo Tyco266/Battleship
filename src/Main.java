@@ -14,6 +14,7 @@ public class Main {
         initializePlayGround(playGround);
         showPlayGround(playGround, size);
 
+
     }
 
     private static void gameStart() {
@@ -86,8 +87,8 @@ public class Main {
 
 private boolean[][] shoot;
 
-    public boolean pitch(int x, int y) {
-        if (x < 0 || x > 5 || y < 0 || y > 5) {
+    public boolean pitch(int x, int y, int size) {
+        if (x < 0 || x > size || y < 0 || y > size) {
             System.out.println("Ungültige Koordinaten. Bitte gib gültige Koordinaten ein.");
             return false;
         }
