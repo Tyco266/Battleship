@@ -1,7 +1,4 @@
-import java.util.Arrays;
-import java.util.InputMismatchException;
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -12,13 +9,8 @@ public class Main {
         char[][] playGround = new char[size][size];
 
         initializePlayGround(playGround);
-        //Tyco:Zauber Schiffe da rein
-        //Mia int x, y
+        createShips(playGround, size);
         showPlayGround(playGround, size);
-        //Userdialog > x: 1 y: 2
-        int fakex=0,fakey=1;
-        checkHitanddrownship(fakex,fakey,size,playGround);
-
     }
 
     private static void gameStart() {
@@ -32,7 +24,6 @@ public class Main {
                 System.out.println("Anleitung hier\n");
                 continue;
             } else if (Objects.equals(choose, "Start")) {
-                System.out.println("Spiel gestartet");
                 break;
             }
             System.out.println("Ungültige Eingabe. Bitte 'Start' oder 'Anleitung' eingeben.");
@@ -60,16 +51,8 @@ public class Main {
                 scanner.next();
             }
         }
-
-public Scanner [] shoot() {
-        System.out.println("Gib eine x Koordinate ein!");
-        Scanner x = new Scanner(System.in);
-        System.out.println("Gib eine y-Koordinate ein!");
-        Scanner y = new Scanner (System.in);
-        Scanner[] koordinate = {x,y};
-        return koordinate;
-
     }
+
 
     private static void initializePlayGround(char[][] playGround) {
         for (char[] row : playGround) {
@@ -77,16 +60,42 @@ public Scanner [] shoot() {
         }
     }
 
+    private static void createShips(char[][] playGround, int size) {
+        Scanner scanner = new Scanner(System.in);
+        try {
+            System.out.println("Bitte Anzahl der Schiffe angeben.");
+            Random random = new Random();
+            int shipAmount = scanner.nextInt();
+            if (shipAmount < size * size) {
+                for (int i = 0; i < shipAmount; i++) {
+                    int x = random.nextInt(size - 1);
+                    int y = random.nextInt(size - 1);
+                    if (playGround[x][y] == 'S') {
+                        i--;
+                    } else {
+                        playGround[x][y] = 'S';
+                    }
+                }
+                System.out.println("Spiel gestartet");
+            }
+
+
+        } catch (InputMismatchException e) {
+            System.out.println("...");
+            scanner.next();
+        }
+
+
+    }
+
     private static void showPlayGround(char[][] playGround, int size) {
         System.out.print("   ");
         for (int i = 0; i < size; i++) {
-            System.out.printf("%2d  ",i);
-            //System.out.print(i + "  ");
+            System.out.printf("%2d%s", i, " ".repeat(size >= 10 ? 2 : 1));
         }
         System.out.println();
         for (int i = 0; i < size; i++) {
-            System.out.printf("%2d  ",i);
-            //System.out.print(i + "  ");
+            System.out.printf("%2d  ", i);
             for (int j = 0; j < size; j++) {
                 System.out.print(playGround[i][j] + " ".repeat(size >= 10 ? 3 : 2));
             }
@@ -94,23 +103,7 @@ public Scanner [] shoot() {
         }
         System.out.println();
     }
-
-
-    public static boolean checkHitanddrownship(int x, int y, int size, char[][] playground) {
-        if (x < 0 || x > size || y < 0 || y > size) {
-            System.out.println("Ungültige Koordinaten. Bitte gib gültige Koordinaten ein.");
-            return false;
-        }
-        char gameObject = playground[x][y];
-        if (gameObject != '~' ) {
-            System.out.println("Treffer! Du hast ein Schiff getroffen!");
-            playground[x][y] = 'X'; //Schiffswrack markiert mit X
-            return true;
-        } else {
-            System.out.println("Leider kein Treffer. Versuche es erneut!");
-            return false;
-        }
-    }
-
 }
+
+
 
