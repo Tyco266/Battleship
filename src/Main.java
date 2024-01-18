@@ -12,13 +12,7 @@ public class Main {
         char[][] playGround = new char[size][size];
 
         initializePlayGround(playGround);
-        //Tyco:Zauber Schiffe da rein
-        //Mia int x, y
         showPlayGround(playGround, size);
-        //Userdialog > x: 1 y: 2
-        int fakex=0,fakey=1;
-        checkHitanddrownship(fakex,fakey,size,playGround);
-
     }
 
     private static void gameStart() {
@@ -61,15 +55,7 @@ public class Main {
             }
         }
 
-public Scanner [] shoot() {
-        System.out.println("Gib eine x Koordinate ein!");
-        Scanner x = new Scanner(System.in);
-        System.out.println("Gib eine y-Koordinate ein!");
-        Scanner y = new Scanner (System.in);
-        Scanner[] koordinate = {x,y};
-        return koordinate;
 
-    }
 
     private static void initializePlayGround(char[][] playGround) {
         for (char[] row : playGround) {
@@ -93,23 +79,6 @@ public Scanner [] shoot() {
             System.out.println();
         }
         System.out.println();
-    }
-
-
-    public static boolean checkHitanddrownship(int x, int y, int size, char[][] playground) {
-        if (x < 0 || x > size || y < 0 || y > size) {
-            System.out.println("Ungültige Koordinaten. Bitte gib gültige Koordinaten ein.");
-            return false;
-        }
-        char gameObject = playground[x][y];
-        if (gameObject != '~' ) {
-            System.out.println("Treffer! Du hast ein Schiff getroffen!");
-            playground[x][y] = 'X'; //Schiffswrack markiert mit X
-            return true;
-        } else {
-            System.out.println("Leider kein Treffer. Versuche es erneut!");
-            return false;
-        }
     }
 
 }
