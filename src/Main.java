@@ -25,7 +25,9 @@ public class Main {
                 } else {
                     System.out.println("Es sind noch " + remainingShips + " Schiffe übrig.");
                 }
+                shotsFired++;
             }
+            hitRate(shipAmount, shotsFired);
             System.out.println("Willst du nochmal spielen? Ja/Nein");
             if (!playAgain()) break;
         }
@@ -56,10 +58,10 @@ public class Main {
             try {
                 System.out.println("Bitte größe des Spielfelds als einzelne Zahl eingeben.");
                 int size = scanner.nextInt();
-                if (size > 3) {
+                if (size > 2) {
                     return size;
                 } else {
-                    System.out.println("Die Größe muss größer als 0 sein.\n");
+                    System.out.println("Die Größe muss größer als 2 sein.\n");
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Ungültige Eingabe. Bitte geben Sie eine Zahl ein.");
@@ -142,7 +144,7 @@ public class Main {
         int x = coordinates[0];
         int y = coordinates[1];
 
-        if (x < 0 || x > size || y < 0 || y > size) {
+        if (x < 0 || x >= size || y < 0 || y >= size) {
             System.out.println("Ungültige Koordinaten. Bitte gib gültige Koordinaten ein.");
             return;
         }
@@ -173,6 +175,11 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         String decision = scanner.nextLine();
         return decision.equals("Ja");
+    }
+
+    static void hitRate(int shipAmount, int shotsFired) {
+        double hitRate = ((double) shipAmount / shotsFired) * 100;
+        System.out.println("Trefferrate: " + hitRate + "%.\n");
     }
 }
 
