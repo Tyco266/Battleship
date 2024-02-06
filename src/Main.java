@@ -111,11 +111,11 @@ public class Main {
         int ykoordinate = 0;
         int xkoordinate = 0;
         Scanner scannen = new Scanner(System.in);
-        int[] Koordinaten = {xkoordinate, ykoordinate};
         System.out.println("Gib bitte eine x-Koordinate ein.");
         ykoordinate = scannen.nextInt();
         System.out.println("Gib nun eine x-Koordinate ein.");
         xkoordinate = scannen.nextInt();
+        int[] Koordinaten = {xkoordinate, ykoordinate};
         return Koordinaten;
     }
     }
