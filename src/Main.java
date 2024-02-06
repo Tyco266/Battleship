@@ -101,21 +101,24 @@ public class Main {
         }
     }
 
-    public static char [] visual(){
+    public static char [] visual(int x, int y, int size, char [][] playground){
+        for(x = 0; x<size; x++) {
+            System.out.println()
+
 
 
         }
         }
 
     public static int [] shoot() {
-        int ykoordinate = 0;
-        int xkoordinate = 0;
+
         Scanner scannen = new Scanner(System.in);
+        int[] Koordinaten = new int[2];
+
         System.out.println("Gib bitte eine x-Koordinate ein.");
-        ykoordinate = scannen.nextInt();
+        Koordinaten[0] = scannen.nextInt();
         System.out.println("Gib nun eine x-Koordinate ein.");
-        xkoordinate = scannen.nextInt();
-        int[] Koordinaten = {xkoordinate, ykoordinate};
+        Koordinaten [1] = scannen.nextInt();
         return Koordinaten;
     }
     }
